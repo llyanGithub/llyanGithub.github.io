@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo 学习笔记</title>
+    <url>/2020/01/18/hexo/hexo_study_note/</url>
+    <content><![CDATA[<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p><code>hexo</code>是一个用js写成的博客框架，他可以非常方便快速的定制和部署用户的博客，并且也非常便于博客的管理，它提供了以下几个几本页面：</p>
+<ul>
+<li>博客分类</li>
+<li>博客标签</li>
+<li>最近提交的博客</li>
+<li>博客列表</li>
+<li>关键字</li>
+<li>友情链接</li>
+</ul>
+<p>另外，hexo有几百个主题方便用户选择，这些主题的网址是：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
+<li>安装nodejs<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ brew install nodejs</span><br><span class="line">$ brew install npm</span><br></pre></td></tr></table></figure></li>
+<li>安装git</li>
+<li>安装hexo<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+安装完成之后就可以在终端命令行使用命令<code>hexo</code>了</li>
+</ol>
+<h4 id="新建hexo工程"><a href="#新建hexo工程" class="headerlink" title="新建hexo工程"></a>新建<code>hexo</code>工程</h4><p>首先需要先初始化一个<code>hexo</code>工程，在这个工程会自动下载一些必要的组建，并且使用一个<code>landscape</code>的博客主题，如果不喜欢这个主题，可以稍后换成自己喜欢的</p>
+<ol>
+<li>初始化<code>hexo</code>工程<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init blog-hexo</span><br><span class="line">$ cd blog-hexo</span><br></pre></td></tr></table></figure>
+该命令会新建一个<code>blog-hexo</code>的文件夹，这个文件夹下面有以下内容：</li>
+</ol>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>_config.yml: 博客的配置文件</li>
+</ul>
+<ol start="2">
+<li>运行博客</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中输入：<code>localhost:4000</code>就可以看到博客的样子了</p>
+<h4 id="博客管理"><a href="#博客管理" class="headerlink" title="博客管理"></a>博客管理</h4><p><code>hexo</code>工程下面有一个source目录，该目录下有一个_post的文件夹，这个文件夹下面所有的<code>markdown</code>文档都会呈现在博客页面上</p>
+<ol>
+<li>添加博客</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new &quot;FirstBlog&quot;</span><br></pre></td></tr></table></figure>
+<p>该命令就会在<code>_post</code>目录下面新建一个<code>FirstBlog</code>的文档，其实<code>FirstBlog</code>是博客的标题，但是默认配置也会把标题名作为<code>markdown</code>文档的文件名</p>
+<ol start="2">
+<li>添加博客分类</li>
+</ol>
+<p>新建好的博客默认开头会又类似这样的内容:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: firstBLog</span><br><span class="line">date: 2020-01-18 11:00:58</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><code>hexo</code>把这个称为<a href="https://hexo.io/docs/front-matter.html" target="_blank" rel="noopener"><code>Front-matter</code></a>,<code>Front-matter</code>有以下几个字段：</p>
+<ul>
+<li>layout</li>
+<li>title</li>
+<li>date</li>
+<li>updated</li>
+<li>comments</li>
+<li>tags</li>
+<li>categories</li>
+<li>permalink</li>
+<li>keywords</li>
+<li>excerpt</li>
+<li>thumbnail: 添加博客封面图片</li>
+</ul>
+<p><code>Front-matter</code>就是指当查看博客列表的时候，博客会呈现出缩略显示的模式，<code>Front-matter</code>就是定义这个缩略显示的格式，包括显示标题，发表时间，封面图片，分类之类的信息，如果想给博客归类，则非常简单：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: firstBLog</span><br><span class="line">date: 2020-01-18 11:00:58</span><br><span class="line">categories: 技术</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这个时候<code>hexo</code>框架会自动生成一个名为<code>技术</code>的分类，并且在博客的菜单栏上出现一个叫做<code>技术</code>的子菜单，点击这个子菜单会列出所有<code>categories: 技术</code>这样的博客，<code>tag</code>的使用也是同样的道理</p>
+<ol start="2">
+<li>分类目录</li>
+</ol>
+<p>为了便于对博客源文件进行管理，最好在<code>source/_post</code>目录下新建一个和分类名相同的子目录，可以使用一下命令创建博客</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new --path tech&#x2F;myBlog</span><br></pre></td></tr></table></figure>
+<p>该命令会在_post目录下新建一个<code>tech</code>目录，并且生成一个名为<code>myBlog</code>的 markdonw文档</p>
+<p>如果想要为博客添加标题，可以继续在命令后面添加参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new --path tech&#x2F;myBlog &quot;my blog title&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h4><p><code>hexo</code>更换主题非常方便，博客根目录下有一个<code>themes</code>的目录，该目录存放的就是和主题相关的源代码，这些主题大部分都是托管在github上的，因此主要找到相应主题所在的github地址，然后clone下来就行了</p>
+<ol>
+<li><p>下载主题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd themes</span><br><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;ppoffice&#x2F;hexo-theme-hueman.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置主题</p>
+</li>
+</ol>
+<ul>
+<li>博客根目录下有个_config.yml的文档，其中有个字段<code>theme:</code>, 改成主题目录对应的文件名就可以了，这里是<code>hexo-theme-hueman</code></li>
+<li>主题目录下有个<code>_config.yml.example</code>的文件，将其copy一份，重命名为<code>_config.yml</code></li>
+</ul>
+<p>重新打开博客则可以看见更新后的主题了</p>
+<h4 id="增加博客搜索功能"><a href="#增加博客搜索功能" class="headerlink" title="增加博客搜索功能"></a>增加博客搜索功能</h4><ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-json-content</span><br><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置</li>
+</ol>
+<p>在全局的_config.yml 文件中增加配置项：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+
+<p>再次打开博客时，搜索功能就生效了</p>
+<h4 id="托管到github"><a href="#托管到github" class="headerlink" title="托管到github"></a>托管到github</h4><p>github为每个用户提供一个域名，这个域名和一个特定的仓库名字相同，通过这个域名可以访问这个仓库目录下的所有文件，这个域名的形式为<code>username.github.io</code></p>
+<p>如果用户创建了这个叫做<code>username.github.io</code>,并且该目录下有一个readMe.md的文件，那么只要在浏览器中输入<code>https://username.github.io/readMe.md</code>那么就可以访问该文件了</p>
+<p>所以，托管到github上的网站是一个纯前端的网站，github只提供一个get文档的服务，所有功能都由前端来实现</p>
+<ol>
+<li><p>新建一个仓库名为<code>username.github.io</code>的仓库</p>
+</li>
+<li><p>在<code>hexo</code>目录下安装支持git提交的组建</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li><p>配置要提交的github地址<br><code>hexo</code>根目录下有个<code>_config.yml</code>的文件，在最下面添加：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:username&#x2F;username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li>
+<li><p>生存要提交的静态文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>这样就把博客生存的静态文件提交到github上面了，此时在浏览器访问:<a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a> 就可以访问到自己的博客了</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/01/17/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -15,7 +141,7 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a><br>中文大口大口看到经典款·</p>
 ]]></content>
   </entry>
 </search>
