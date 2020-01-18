@@ -36,3 +36,4 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+中文大口大口看到经典款·
