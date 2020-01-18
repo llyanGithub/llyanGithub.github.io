@@ -123,8 +123,11 @@
 <p>这样就把博客生存的静态文件提交到github上面了，此时在浏览器访问:<a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a> 就可以访问到自己的博客了</p>
 ]]></content>
       <categories>
-        <category>hexo</category>
+        <category>学习笔记</category>
       </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
